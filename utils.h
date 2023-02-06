@@ -12,9 +12,11 @@
 #include <climits>
 
 // containers
-using std::vector, std::unordered_map, std::unordered_set, std::stack, std::pair, std::tuple;
+using std::vector, std::unordered_map, std::unordered_set, std::stack, 
+    std::pair, std::tuple;
 // functions
-using std::swap, std::max, std::min, std::function, std::apply, std::stoi;
+using std::swap, std::max, std::min, std::function, std::apply, std::stoi,
+    std::make_pair, std::transform, std::sort;
 // io-related
 using std::string, std::cout, std::endl, std::stringstream, std::to_string;
 
