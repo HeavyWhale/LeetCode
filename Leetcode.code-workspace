@@ -73,7 +73,10 @@
 			"stack": "cpp",
 			"deque": "cpp",
 			"iomanip": "cpp",
-			"climits": "cpp"
+			"climits": "cpp",
+			"iterator": "cpp",
+			"memory_resource": "cpp",
+			"queue": "cpp"
 		}
 	}
 }
