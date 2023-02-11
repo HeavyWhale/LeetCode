@@ -4,6 +4,8 @@
 #include <stack>
 #include <queue>
 
+#include <algorithm>
+
 #include <string>
 #include <iostream>
 #include <functional>
@@ -17,7 +19,8 @@ using std::vector, std::unordered_map, std::unordered_set, std::stack,
     std::queue, std::pair, std::tuple;
 // functions
 using std::swap, std::max, std::min, std::function, std::apply, std::stoi,
-    std::make_pair, std::transform, std::sort, std::back_inserter;
+    std::make_pair, std::transform, std::sort, std::back_inserter,
+    std::min_element, std::max_element;
 // io-related
 using std::string, std::cout, std::endl, std::stringstream, std::to_string;
 
