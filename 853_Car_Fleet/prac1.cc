@@ -3,12 +3,12 @@
 class Solution {
 public:
     int carFleet(int target, vector<int>& position, vector<int>& speed) {
-        return carFleet_minStack(target, position, speed);
+        return carFleet_monoDecreasingStack(target, position, speed);
     }
 
 private:
     int 
-    carFleet_minStack
+    carFleet_monoDecreasingStack
     (int target, const vector<int>& position, const vector<int>& speed) 
     {
         const int N = position.size();

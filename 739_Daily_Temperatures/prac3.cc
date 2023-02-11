@@ -7,7 +7,7 @@ public:
     }
 
 private:
-    vector<int> dailyTemperatures_minStack(const vector<int>& temps) {
+    vector<int> dailyTemperatures_monoDecreasingStack(const vector<int>& temps) {
         const int N = temps.size();
         stack<int> colderDays;
         vector<int> result (N, 0);
