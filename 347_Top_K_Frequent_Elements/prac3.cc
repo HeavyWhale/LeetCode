@@ -69,6 +69,6 @@ int main() {
     Solution s = Solution();
 
     // cout << '[' << vec_to_str(nums) << "] -> " << s.topKFrequent(nums, 1) << '\n';
-    cout << vec2Str(test) << " -> " << vec2Str(s.topKFrequent(test, 2)) << '\n';
-    cout << vec2Str(test1) << " -> " << vec2Str(s.topKFrequent(test1, 1)) << '\n';
+    cout << repr(test) << " -> " << repr(s.topKFrequent(test, 2)) << '\n';
+    cout << repr(test1) << " -> " << repr(s.topKFrequent(test1, 1)) << '\n';
 }

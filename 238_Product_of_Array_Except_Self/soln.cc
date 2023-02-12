@@ -41,5 +41,5 @@ public:
 int main() {
     vector<int> nums = {1,2,3,4,5};
     Solution s = Solution();
-    cout << vec2Str(nums) << " -> " << vec2Str(s._productExceptSelf(nums)) << '\n';
+    cout << repr(nums) << " -> " << repr(s._productExceptSelf(nums)) << '\n';
 }

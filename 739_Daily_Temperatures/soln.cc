@@ -55,9 +55,9 @@ int main() {
         myex {60, 44, 73, 85, 46, 41, 76},      // [2,1,1,0,2,1,0]
         error {34,80,80,34,34,80,80,80,80,34};  // [1|0|0|2|1|0|0|0|0|0]
     Solution s {};
-    cout << vec2Str(s.dailyTemperatures(temp)) << '\n';
-    cout << vec2Str(s.dailyTemperatures(temp1)) << '\n';
-    cout << vec2Str(s.dailyTemperatures(temp2)) << '\n';
-    cout << vec2Str(s.dailyTemperatures(myex)) << '\n';
-    cout << vec2Str(s.dailyTemperatures(error)) << '\n';
+    cout << repr(s.dailyTemperatures(temp)) << '\n';
+    cout << repr(s.dailyTemperatures(temp1)) << '\n';
+    cout << repr(s.dailyTemperatures(temp2)) << '\n';
+    cout << repr(s.dailyTemperatures(myex)) << '\n';
+    cout << repr(s.dailyTemperatures(error)) << '\n';
 }

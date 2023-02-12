@@ -56,7 +56,7 @@ private:
                 visited[n] = true;
             } // for
         } // for
-        // cout << arr2Str(visited, 10) << "\n\n";
+        // cout << arr_repr(visited, 10) << "\n\n";
         return true;
     } // checkSubBox
 };

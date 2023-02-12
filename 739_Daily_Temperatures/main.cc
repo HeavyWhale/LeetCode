@@ -8,9 +8,9 @@ int main() {
         myex  {60,44,73,85,46,41,76},           
         error {34,80,80,34,34,80,80,80,80,34};  
     Solution s {};
-    cout << vec2Str(s.dailyTemperatures(temp)) << '\n';     // [1,1,4,2,1,1,0,0]
-    cout << vec2Str(s.dailyTemperatures(temp1)) << '\n';    // [1,1,1,0]
-    cout << vec2Str(s.dailyTemperatures(temp2)) << '\n';    // [1,1,0]
-    cout << vec2Str(s.dailyTemperatures(myex)) << '\n';     // [2,1,1,0,2,1,0]
-    cout << vec2Str(s.dailyTemperatures(error)) << '\n';    // [1|0|0|2|1|0|0|0|0|0]
+    cout << repr(s.dailyTemperatures(temp)) << '\n';     // [1,1,4,2,1,1,0,0]
+    cout << repr(s.dailyTemperatures(temp1)) << '\n';    // [1,1,1,0]
+    cout << repr(s.dailyTemperatures(temp2)) << '\n';    // [1,1,0]
+    cout << repr(s.dailyTemperatures(myex)) << '\n';     // [2,1,1,0,2,1,0]
+    cout << repr(s.dailyTemperatures(error)) << '\n';    // [1|0|0|2|1|0|0|0|0|0]
 }

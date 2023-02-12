@@ -55,15 +55,15 @@ int main() {
     // cout << '[' << vec_to_str(nums2) << "] -> " << s.quick_select(nums2, 4) << '\n';
     // cout << '[' << vec_to_str(nums3) << "] -> " << s.quick_select(nums3, 1) << '\n';
 
-    cout << vec2Str(nums) << " -> ";
-    cout  << vec2Str(s.sortArray(nums)) << '\n';
+    cout << repr(nums) << " -> ";
+    cout  << repr(s.sortArray(nums)) << '\n';
 
-    cout  << vec2Str(nums1) << " -> ";
-    cout  << vec2Str(s.sortArray(nums1))  << '\n';
+    cout  << repr(nums1) << " -> ";
+    cout  << repr(s.sortArray(nums1))  << '\n';
 
-    cout  << vec2Str(nums2) << " -> ";
-    cout  << vec2Str(s.sortArray(nums2))  << '\n';
+    cout  << repr(nums2) << " -> ";
+    cout  << repr(s.sortArray(nums2))  << '\n';
 
-    cout  << vec2Str(nums3) << " -> ";
-    cout  << vec2Str(s.sortArray(nums3))  << '\n';
+    cout  << repr(nums3) << " -> ";
+    cout  << repr(s.sortArray(nums3))  << '\n';
 }

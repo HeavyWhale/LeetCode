@@ -9,5 +9,5 @@ int main() {
     };
 
     Codec codec = Codec();
-    cout << vec2Str(codec.decode(codec.encode(strs))) << '\n';
+    cout << repr(codec.decode(codec.encode(strs))) << '\n';
 }

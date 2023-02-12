@@ -33,7 +33,7 @@ inline void hash_combine(std::size_t & seed, const T & v)
 };
 
 template <class T>
-string vec2Str(const vector<T>& vec)
+string repr(const vector<T>& vec)
 {
     stringstream ss;
     ss << '[';
@@ -45,7 +45,7 @@ string vec2Str(const vector<T>& vec)
     return ss.str();
 }
 
-string vec2Str(const vector<string>& vec)
+string repr(const vector<string>& vec)
 {
     stringstream ss;
     ss << '[';
@@ -57,7 +57,7 @@ string vec2Str(const vector<string>& vec)
     return ss.str();
 }
 
-string vec2Str(const vector<char>& vec)
+string repr(const vector<char>& vec)
 {
     stringstream ss;
     ss << '[';
@@ -70,7 +70,7 @@ string vec2Str(const vector<char>& vec)
 }
 
 template <typename T>
-string arr2Str(const T* arr, const size_t size)
+string arr_repr(const T* arr, const size_t size)
 {
     stringstream ss;
     ss << '[';

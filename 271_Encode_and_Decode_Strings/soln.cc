@@ -21,7 +21,7 @@ public:
             int length = stoi(s.substr(i, prefix_size));
             i += prefix_size;
             result.emplace_back(s.substr(i, length));
-            // cout << "i = " << i << ", length = " << length << ", result = " << vec2Str(result) << '\n';
+            // cout << "i = " << i << ", length = " << length << ", result = " << repr(result) << '\n';
             i += length;
         } // for
 
@@ -45,5 +45,5 @@ int main() {
     };
 
     Codec codec = Codec();
-    cout << vec2Str(codec.decode(codec.encode(strs))) << '\n';
+    cout << repr(codec.decode(codec.encode(strs))) << '\n';
 }
