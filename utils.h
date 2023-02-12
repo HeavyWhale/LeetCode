@@ -45,6 +45,42 @@ string repr(const vector<T>& vec)
     return ss.str();
 }
 
+template <class T>
+string repr(const stack<T>& st)
+{
+    stringstream ss;
+    ss << '[';
+    // Adapted from https://stackoverflow.com/a/12631811/9438200
+    struct Hack : public stack<T> {
+        static T itemAt(size_t i, const stack<T>& st) { return (st.*&Hack::c)[i]; }
+    };
+    
+    for (size_t i = 0; i < st.size(); ++i) {
+        ss << to_string(Hack::itemAt(i, st));
+        if (i < st.size() - 1) ss << '|';
+    }
+    ss << ')';
+    return ss.str();
+}
+
+template <class T>
+string repr(const queue<T>& st)
+{
+    stringstream ss;
+    ss << '(';
+    // Adapted from https://stackoverflow.com/a/12631811/9438200
+    struct Hack : public queue<T> {
+        static T itemAt(size_t i, const queue<T>& st) { return (st.*&Hack::c)[i]; }
+    };
+    
+    for (size_t i = 0; i < st.size(); ++i) {
+        ss << to_string(Hack::itemAt(i, st));
+        if (i < st.size() - 1) ss << '|';
+    }
+    ss << ']';
+    return ss.str();
+}
+
 string repr(const vector<string>& vec)
 {
     stringstream ss;
