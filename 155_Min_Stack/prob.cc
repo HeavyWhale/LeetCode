@@ -1,3 +1,5 @@
+#include "../utils.h"
+
 class MinStack {
 public:
     MinStack() {
