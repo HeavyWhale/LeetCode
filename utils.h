@@ -26,21 +26,54 @@ using std::string, std::cout, std::endl, std::stringstream, std::to_string;
 
 
 template <class T>
-inline void hash_combine(std::size_t & seed, const T & v)
+inline void hash_combine(size_t& seed, const T& v)
 {
     std::hash<T> hasher;
     seed ^= hasher(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
 };
+
+// TODO: Use traits to generalize all repr functions on arbitrary container
+// see https://stackoverflow.com/a/7728728/9438200 for more detail
+
+// override the `to_string`
+string to_string(const string& s) {
+    return s;
+}
+
+template <class T>
+string repr(const T& t)
+{
+    return to_string(t);
+}
 
 template <class T>
 string repr(const vector<T>& vec)
 {
     stringstream ss;
     ss << '[';
-    for (size_t i = 0; i < vec.size(); ++i) {
-        ss << to_string(vec[i]);
-        if (i < vec.size() - 1) ss << '|';
+    if (vec.empty()) goto END;
+    for (auto it = vec.cbegin() ;; ) {
+        ss << repr(*it);
+        if (++it == vec.cend()) break;
+        ss << '|';
     }
+END:
+    ss << ']';
+    return ss.str();
+}
+
+template <class T>
+string repr(const vector<vector<T>>& vec)
+{
+    stringstream ss;
+    ss << '[';
+    if (vec.empty()) goto END;
+    for (auto it = vec.cbegin() ;; ) {
+        ss << repr(*it);
+        if (++it == vec.cend()) break;
+        ss << " | ";
+    }
+END:
     ss << ']';
     return ss.str();
 }
@@ -54,17 +87,19 @@ string repr(const stack<T>& st)
     struct Hack : public stack<T> {
         static T itemAt(size_t i, const stack<T>& st) { return (st.*&Hack::c)[i]; }
     };
-    
-    for (size_t i = 0; i < st.size(); ++i) {
-        ss << to_string(Hack::itemAt(i, st));
-        if (i < st.size() - 1) ss << '|';
+    if (st.empty()) goto END;
+    for (size_t i = 0 ;; ) {
+        ss << repr(Hack::itemAt(i, st));
+        if (++i == st.size()) break;
+        ss << '|';
     }
+END:
     ss << ')';
     return ss.str();
 }
 
 template <class T>
-string repr(const queue<T>& st)
+string repr(const queue<T>& q)
 {
     stringstream ss;
     ss << '(';
@@ -72,36 +107,32 @@ string repr(const queue<T>& st)
     struct Hack : public queue<T> {
         static T itemAt(size_t i, const queue<T>& st) { return (st.*&Hack::c)[i]; }
     };
-    
-    for (size_t i = 0; i < st.size(); ++i) {
-        ss << to_string(Hack::itemAt(i, st));
-        if (i < st.size() - 1) ss << '|';
+    if (q.empty()) goto END;
+    for (size_t i = 0 ;; ) {
+        ss << repr(Hack::itemAt(i, q));
+        if (++i == q.size()) break;
+        ss << '|';
     }
+END:
     ss << ']';
     return ss.str();
 }
 
-string repr(const vector<string>& vec)
+template<class Key, class Value>
+string repr(const unordered_map<Key, Value>& map)
 {
     stringstream ss;
-    ss << '[';
-    for (size_t i = 0; i < vec.size(); ++i) {
-        ss << vec[i];
-        if (i < vec.size() - 1) ss << '|';
+    ss << '{';
+    if (map.empty()) goto END;
+    ss << ' ';
+    for (auto it = map.cbegin() ;; ) {
+        ss << repr(it->first) << ':' << repr(it->second);
+        if (++it == map.cend()) break;
+        ss << " | ";
     }
-    ss << ']';
-    return ss.str();
-}
-
-string repr(const vector<char>& vec)
-{
-    stringstream ss;
-    ss << '[';
-    for (size_t i = 0; i < vec.size(); ++i) {
-        ss << vec[i];
-        if (i < vec.size() - 1) ss << '|';
-    }
-    ss << ']';
+    ss << ' ';
+END:
+    ss << '}';
     return ss.str();
 }
 
@@ -110,10 +141,13 @@ string arr_repr(const T* arr, const size_t size)
 {
     stringstream ss;
     ss << '[';
-    for (size_t i = 0; i < size; ++i) {
-        ss << to_string(arr[i]);
-        if (i < size - 1) ss << '|';
+    if (size == 0) goto END;
+    for (size_t i = 0 ;; ) {
+        ss << repr(arr[i]);
+        if (++i == size) break;
+        ss << '|';
     }
+END:
     ss << ']';
     return ss.str();
 }
