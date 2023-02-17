@@ -4,15 +4,15 @@
 #include <stack>
 #include <queue>
 
-#include <algorithm>
+#include <algorithm>        // swap, max, min, transform, sort, max_element, min_element
 
 #include <string>
 #include <iostream>
-#include <functional>
+#include <functional>       // function
 #include <sstream>
-#include <iomanip>
+#include <iomanip>          // setw, set_fill
 
-#include <climits>
+#include <climits>          // INT_MAX, INT_MIN
 
 // containers
 using std::vector, std::unordered_map, std::unordered_set, std::stack, 
