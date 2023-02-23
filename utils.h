@@ -26,22 +26,24 @@ using std::swap, std::max, std::min, std::function, std::apply, std::stoi,
     std::make_pair, std::transform, std::sort, std::back_inserter,
     std::min_element, std::max_element, std::for_each;
 // io-related
-using std::string, std::cout, std::endl, std::stringstream, std::to_string;
+using std::string, std::cout, std::endl, std::ostringstream, std::to_string,
+    std::ostringstream;
 
+// This is MAGIC. Completely out of mind!
+// From https://stackoverflow.com/a/64215959/9438200
+#define NAMED_REPR(...) \
+    named_repr_of_vars(#__VA_ARGS__,__VA_ARGS__)
 
-template <class T>
-inline void hash_combine(size_t& seed, const T& v)
-{
-    std::hash<T> hasher;
-    seed ^= hasher(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-};
-
-// TODO: Use traits to generalize all repr functions on arbitrary container
+// TODO: Use traits to generalize all repr functions' application on arbitrary container
 // see https://stackoverflow.com/a/7728728/9438200 for more detail
 
-// override the `to_string`
-string to_string(const string& s) {
-    return s;
+// override `to_string`
+string to_string(const string& str) {
+    return str;
+}
+
+string to_string(const bool& boolean) {
+    return boolean ? "true" : "false";
 }
 
 template <class T>
@@ -53,145 +55,145 @@ string repr(const T& t)
 template <class T>
 string repr(const vector<T>& vec)
 {
-    stringstream ss;
-    ss << '[';
-    if (vec.empty()) goto END;
-    for (auto it = vec.cbegin() ;; ) {
-        ss << repr(*it);
-        if (++it == vec.cend()) break;
-        ss << '|';
+    ostringstream oss;
+    oss << '[';
+    if (!vec.empty()) {
+        for (auto it = vec.cbegin() ;; ) {
+            oss << repr(*it);
+            if (++it == vec.cend()) break;
+            oss << '|';
+        }
     }
-END:
-    ss << ']';
-    return ss.str();
+    oss << ']';
+    return oss.str();
 }
 
 template <class T>
 string repr(const vector<vector<T>>& vec)
 {
-    stringstream ss;
-    ss << '[';
-    if (vec.empty()) goto END;
-    for (auto it = vec.cbegin() ;; ) {
-        ss << repr(*it);
-        if (++it == vec.cend()) break;
-        ss << " | ";
+    ostringstream oss;
+    oss << '[';
+    if (!vec.empty()) {
+        for (auto it = vec.cbegin() ;; ) {
+            oss << repr(*it);
+            if (++it == vec.cend()) break;
+            oss << " | ";
+        }
     }
-END:
-    ss << ']';
-    return ss.str();
+    oss << ']';
+    return oss.str();
 }
 
 template <class T>
 string repr(const stack<T>& st)
 {
-    stringstream ss;
-    ss << '[';
+    ostringstream oss;
+    oss << '[';
     // Adapted from https://stackoverflow.com/a/12631811/9438200
     struct Hack : public stack<T> {
         static T itemAt(size_t i, const stack<T>& st) { return (st.*&Hack::c)[i]; }
     };
-    if (st.empty()) goto END;
-    for (size_t i = 0 ;; ) {
-        ss << repr(Hack::itemAt(i, st));
-        if (++i == st.size()) break;
-        ss << '|';
+    if (!st.empty()) {
+        for (size_t i = 0 ;; ) {
+            oss << repr(Hack::itemAt(i, st));
+            if (++i == st.size()) break;
+            oss << '|';
+        }
     }
-END:
-    ss << ')';
-    return ss.str();
+    oss << ')';
+    return oss.str();
 }
 
 template <class T>
-string repr(const queue<T>& q)
+string repr(const queue<T>& que)
 {
-    stringstream ss;
-    ss << '(';
+    ostringstream oss;
+    oss << '(';
     // Adapted from https://stackoverflow.com/a/12631811/9438200
     struct Hack : public queue<T> {
         static T itemAt(size_t i, const queue<T>& st) { return (st.*&Hack::c)[i]; }
     };
-    if (q.empty()) goto END;
-    for (size_t i = 0 ;; ) {
-        ss << repr(Hack::itemAt(i, q));
-        if (++i == q.size()) break;
-        ss << '|';
+    if (!que.empty()) {
+        for (size_t i = 0 ;; ) {
+            oss << repr(Hack::itemAt(i, que));
+            if (++i == que.size()) break;
+            oss << '|';
+        }
     }
-END:
-    ss << ']';
-    return ss.str();
+    oss << ']';
+    return oss.str();
 }
 
 template<class Key, class Value>
 string repr(const map<Key, Value>& map)
 {
-    stringstream ss;
-    ss << '{';
-    if (map.empty()) goto END;
-    ss << ' ';
-    for (auto it = map.cbegin() ;; ) {
-        ss << repr(it->first) << ':' << repr(it->second);
-        if (++it == map.cend()) break;
-        ss << " | ";
+    ostringstream oss;
+    oss << '{';
+    if (!map.empty()) {
+        oss << ' ';
+        for (auto it = map.cbegin() ;; ) {
+            oss << repr(it->first) << ':' << repr(it->second);
+            if (++it == map.cend()) break;
+            oss << " | ";
+        }
+        oss << ' ';
     }
-    ss << ' ';
-END:
-    ss << '}';
-    return ss.str();
+    oss << '}';
+    return oss.str();
 }
 
 template<class Key>
 string repr(const set<Key>& set)
 {
-    stringstream ss;
-    ss << '{';
-    if (set.empty()) goto END;
-    ss << ' ';
-    for (auto it = set.cbegin() ;; ) {
-        ss << repr(*it);
-        if (++it == set.cend()) break;
-        ss << " | ";
+    ostringstream oss;
+    oss << '{';
+    if (!set.empty()) {
+        oss << ' ';
+        for (auto it = set.cbegin() ;; ) {
+            oss << repr(*it);
+            if (++it == set.cend()) break;
+            oss << " | ";
+        }
+        oss << ' ';
     }
-    ss << ' ';
-END:
-    ss << '}';
-    return ss.str();
+    oss << '}';
+    return oss.str();
 }
 
 template<class Key, class Value>
 string repr(const unordered_map<Key, Value>& map)
 {
-    stringstream ss;
-    ss << '{';
-    if (map.empty()) goto END;
-    ss << ' ';
-    for (auto it = map.cbegin() ;; ) {
-        ss << repr(it->first) << ':' << repr(it->second);
-        if (++it == map.cend()) break;
-        ss << " | ";
+    ostringstream oss;
+    oss << '{';
+    if (!map.empty()) {
+        oss << ' ';
+        for (auto it = map.cbegin() ;; ) {
+            oss << repr(it->first) << ':' << repr(it->second);
+            if (++it == map.cend()) break;
+            oss << " | ";
+        }
+        oss << ' ';
     }
-    ss << ' ';
-END:
-    ss << '}';
-    return ss.str();
+    oss << '}';
+    return oss.str();
 }
 
 template<class Key>
 string repr(const unordered_set<Key>& set)
 {
-    stringstream ss;
-    ss << '{';
+    ostringstream oss;
+    oss << '{';
     if (!set.empty()) {
-        ss << ' ';
+        oss << ' ';
         for (auto it = set.cbegin() ;; ) {
-            ss << repr(*it);
+            oss << repr(*it);
             if (++it == set.cend()) break;
-            ss << " | ";
+            oss << " | ";
         }
-        ss << ' ';
+        oss << ' ';
     }
-    ss << '}';
-    return ss.str();
+    oss << '}';
+    return oss.str();
 }
 
 // FIXME: Only works for iterators corresponding to one item (vector<int>, set<int> for example)
@@ -199,21 +201,21 @@ string repr(const unordered_set<Key>& set)
 template <class _ForwardIterator>
 string repr(_ForwardIterator __first, _ForwardIterator __last)
 {
-    static_assert(std::__is_cpp17_forward_iterator<_ForwardIterator>::value,
+    static_aossert(std::__is_cpp17_forward_iterator<_ForwardIterator>::value,
         "std::max_element requires a ForwardIterator");
-    stringstream ss;
-    ss << '{';
+    ostringstream oss;
+    oss << '{';
     if (__first != __last) {
-        ss << ' ';
+        oss << ' ';
         for (_ForwardIterator __i = __first ;; ) {
-            ss << repr(*__i);
+            oss << repr(*__i);
             if (++__i == __last) break;
-            ss << '|';
+            oss << '|';
         }
-        ss << ' ';
+        oss << ' ';
     }
-    ss << '}';
-    return ss.str();
+    oss << '}';
+    return oss.str();
 }
 */
 
@@ -221,15 +223,42 @@ string repr(_ForwardIterator __first, _ForwardIterator __last)
 template <typename T>
 string arr_repr(const T* arr, const size_t size)
 {
-    stringstream ss;
-    ss << '[';
-    if (size == 0) goto END;
-    for (size_t i = 0 ;; ) {
-        ss << repr(arr[i]);
-        if (++i == size) break;
-        ss << '|';
+    ostringstream oss;
+    oss << '[';
+    if (size != 0) {
+        for (size_t i = 0 ;; ) {
+            oss << repr(arr[i]);
+            if (++i == size) break;
+            oss << '|';
+        }
     }
-END:
-    ss << ']';
-    return ss.str();
+    oss << ']';
+    return oss.str();
+}
+
+// This is MAGIC. Completely out of mind!
+// From https://stackoverflow.com/a/64215959/9438200
+// Search Keyword: cpp print variables and their names
+template <class T, class... Args>
+string named_repr_of_vars(const char* names, T&& var, Args&&... args) {
+    ostringstream oss;
+
+    // find variable name end
+    const char* end = names;
+    while (*end != ',' && *end != '\0') ++end;
+
+    // display one variable
+    oss.write(names, end - names) << " = " << repr(var) << ',';
+
+    // continue parsing?
+    if constexpr(sizeof...(Args) > 0) {
+        // recursively call named_repr_of_vars() with the new beginning for names
+        oss << named_repr_of_vars(end + 1, std::forward<Args>(args)...);
+    } else {
+        string ret = oss.str();
+        ret.pop_back();
+        return ret;
+    }
+
+    return oss.str();
 }

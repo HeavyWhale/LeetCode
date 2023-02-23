@@ -78,7 +78,9 @@
 			"memory_resource": "cpp",
 			"queue": "cpp",
 			"set": "cpp",
-			"__undef_macros": "cpp"
+			"__undef_macros": "cpp",
+			"__tree": "cpp",
+			"map": "cpp"
 		}
 	}
 }
