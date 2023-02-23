@@ -31,7 +31,6 @@ private:
         };
 
         sort(nums.begin(), nums.end());
-        max_element(nums.begin(), nums.end());
         for (int i = 0; i < N && nums[i] <= 0; ++i) {
             if (i != 0 && nums[i - 1] == nums[i]) continue;
             twoSumForSorted(i);
