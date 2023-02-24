@@ -26,8 +26,8 @@ using std::swap, std::max, std::min, std::function, std::apply, std::stoi,
     std::make_pair, std::transform, std::sort, std::back_inserter,
     std::min_element, std::max_element, std::for_each;
 // io-related
-using std::string, std::cout, std::endl, std::ostringstream, std::to_string,
-    std::ostringstream;
+using std::string, std::cout, std::endl, std::stringstream, std::to_string,
+    std::ostringstream, std::setw, std::setfill;
 
 // This is MAGIC. Completely out of mind!
 // From https://stackoverflow.com/a/64215959/9438200
@@ -38,16 +38,16 @@ using std::string, std::cout, std::endl, std::ostringstream, std::to_string,
 // see https://stackoverflow.com/a/7728728/9438200 for more detail
 
 // override `to_string`
-string to_string(const string& str) {
+inline string to_string(const string& str) {
     return str;
 }
 
-string to_string(const bool& boolean) {
+inline string to_string(const bool& boolean) {
     return boolean ? "true" : "false";
 }
 
 template <class T>
-string repr(const T& t)
+inline string repr(const T& t)
 {
     return to_string(t);
 }
