@@ -29,10 +29,11 @@ using std::swap, std::max, std::min, std::function, std::apply, std::stoi,
 using std::string, std::cout, std::endl, std::stringstream, std::to_string,
     std::ostringstream, std::setw, std::setfill;
 
+#define DEBUG(...) cout << NAMED_REPR(__VA_ARGS__) << '\n'
+
 // This is MAGIC. Completely out of mind!
 // From https://stackoverflow.com/a/64215959/9438200
-#define NAMED_REPR(...) \
-    named_repr_of_vars(#__VA_ARGS__,__VA_ARGS__)
+#define NAMED_REPR(...) named_repr_of_vars(#__VA_ARGS__,__VA_ARGS__)
 
 // TODO: Use traits to generalize all repr functions' application on arbitrary container
 // see https://stackoverflow.com/a/7728728/9438200 for more detail
