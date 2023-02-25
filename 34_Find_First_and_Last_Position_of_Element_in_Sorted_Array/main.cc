@@ -1,4 +1,4 @@
-#include "prac1.cc"
+#include "prac2.cc"
 
 int main() {
     Solution so = Solution();
