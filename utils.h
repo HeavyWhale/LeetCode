@@ -7,6 +7,7 @@
 #include <queue>
 
 #include <algorithm>        // swap, max, min, transform, sort, max_element, min_element, for_each
+#include <numeric>          // accumulate
 
 #include <string>
 #include <iostream>
@@ -24,7 +25,7 @@ using std::vector, std::unordered_map, std::unordered_set, std::stack,
 // functions
 using std::swap, std::max, std::min, std::function, std::apply, std::stoi,
     std::make_pair, std::transform, std::sort, std::back_inserter,
-    std::min_element, std::max_element, std::for_each;
+    std::min_element, std::max_element, std::for_each, std::accumulate;
 // io-related
 using std::string, std::cout, std::endl, std::stringstream, std::to_string,
     std::ostringstream, std::setw, std::setfill;
