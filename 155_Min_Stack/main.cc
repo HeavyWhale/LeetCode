@@ -1,4 +1,4 @@
-#include "prac3.cc"
+#include "prac5.cc"
 
 int main() {
     MinStack ms = MinStack();
