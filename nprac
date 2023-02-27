@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+
+import os
+
+def isValidDir() -> bool:
+    dirs = os.getcwd().split('/')
+    if len(dirs) < 2: return False
+    dirs = dirs[-2:]
+    if dirs[0] != "Leetcode": return False
+    # question = dirs[1].split('-')
+    # if not question[0].isalnum(): return False
+    return True
+
+def filesAreReady(filenames: list[str]) -> bool:
+    return "main.cc" in filenames and "prob.cc" in filenames and "soln.cc" in filenames
+
+def nextPracticeNumber(filenames: list[str]) -> int:
+    count = 0
+    for filename in filenames:
+        if "prac" in filename:
+            count += 1
+    return count + 1
+
+# cwd = os.getcwd()
+# print(cwd)
+
+if __name__ == "__main__":
+    if not isValidDir():
+        print("nprac: error: invalid directory to run")
+        exit(1)
+
+    filenames = sorted([f for f in os.listdir('.') if os.path.isfile(f)])
+    if not filesAreReady(filenames):
+        print("nprac: error: files are not ready, try to run 'nprob' first")
+        exit(1)
+
+    newprac = f"prac{nextPracticeNumber(filenames)}.cc"
+
+    # copy problem template to new practice file
+    os.system(f'cp prob.cc {newprac}')
+    # let main.cc include new practice file
+    os.system(f'gsed -i \'1s/.*/#include \"{newprac}\"/\' main.cc')
+    # open new practice problem and main using vscode
+    os.system(f'code {newprac} main.cc')
+
+    exit(0)
+
+    
+
