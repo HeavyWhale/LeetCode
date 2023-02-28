@@ -1,4 +1,4 @@
-#include "prac2.cc"
+#include "prac3.cc"
 
 int main() {
     vector<int> 

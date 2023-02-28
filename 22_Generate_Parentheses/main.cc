@@ -1,4 +1,4 @@
-#include "prac4.cc"
+#include "prac5.cc"
 
 int main() {
     //               012      013      014      023      024
