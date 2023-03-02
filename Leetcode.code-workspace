@@ -81,7 +81,8 @@
 			"__undef_macros": "cpp",
 			"__tree": "cpp",
 			"map": "cpp",
-			"numeric": "cpp"
+			"numeric": "cpp",
+			"numbers": "cpp"
 		}
 	}
 }

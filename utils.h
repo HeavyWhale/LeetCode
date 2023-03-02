@@ -30,7 +30,19 @@ using std::swap, std::max, std::min, std::function, std::apply, std::stoi,
 using std::string, std::cout, std::endl, std::stringstream, std::to_string,
     std::ostringstream, std::setw, std::setfill;
 
-#define DEBUG(...) cout << NAMED_REPR(__VA_ARGS__) << '\n'
+#ifndef DISABLE
+    #define DEBUG(...) \
+        do { \
+            cout << NAMED_REPR(__VA_ARGS__) << '\n'; \
+        } while (0)
+    #define NEWLINE() \
+        do { \
+            cout << '\n'; \
+        } while (0)
+#else
+    #define DEBUG(...)
+    #define NEWLINE()
+#endif
 
 // This is MAGIC. Completely out of mind!
 // From https://stackoverflow.com/a/64215959/9438200
@@ -40,6 +52,10 @@ using std::string, std::cout, std::endl, std::stringstream, std::to_string,
 // see https://stackoverflow.com/a/7728728/9438200 for more detail
 
 // override `to_string`
+inline string to_string(const char& ch) {
+    return string {ch};
+}
+
 inline string to_string(const string& str) {
     return str;
 }
