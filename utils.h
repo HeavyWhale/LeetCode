@@ -284,6 +284,6 @@ string named_repr_of_vars(const char* names, T&& var, Args&&... args) {
 // return the `str` but all characters are replaced by space (' ')
 string phantom(const string& str) {
     ostringstream oss;
-    for (int i = 0; i < str.size(); ++i) oss << ' ';
+    for (size_t i = 0; i < str.size(); ++i) oss << ' ';
     return oss.str();
 }
