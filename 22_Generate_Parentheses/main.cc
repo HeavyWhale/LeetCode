@@ -1,5 +1,7 @@
 #include "prac5.cc"
 
+#pragma GCC diagnostic ignored "-Wunused-variable"
+
 int main() {
     //               012      013      014      023      024
     vector<string> {"((()))","(()())","(())()","()(())","()()()"};

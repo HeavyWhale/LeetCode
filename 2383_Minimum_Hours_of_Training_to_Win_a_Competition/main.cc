@@ -1,5 +1,7 @@
 #include "prac2.cc"
 
+#pragma GCC diagnostic ignored "-Wunused-variable"
+
 int main() {
     vector<int> 
         exp1 {2,6,3,1}, eng1 {1,4,3,2},

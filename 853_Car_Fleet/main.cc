@@ -1,5 +1,7 @@
 #include "prac6.cc"
 
+#pragma GCC diagnostic ignored "-Wunused-variable"
+
 int main() {
     vector<int> 
         position0 {10,8,0,5,3}, speed0 {2,4,1,1,3},

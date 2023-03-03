@@ -1,5 +1,7 @@
 #include "prac5.cc"
 
+#pragma GCC diagnostic ignored "-Wunused-variable"
+
 int main() {
     vector<int> arr  = {-2,1,-3,4,-1,2,1,-5,4}; // 6
     vector<int> arr1 = {-1};                    // -1

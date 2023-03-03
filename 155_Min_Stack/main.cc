@@ -1,5 +1,7 @@
 #include "prac5.cc"
 
+#pragma GCC diagnostic ignored "-Wunused-variable"
+
 int main() {
     MinStack ms = MinStack();
     ms.push(-2);

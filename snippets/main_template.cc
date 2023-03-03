@@ -1,5 +1,7 @@
 #include "soln.cc"
 
+#pragma GCC diagnostic ignored "-Wunused-variable"
+
 int main() {
     vector<int> 
         exp1 {},

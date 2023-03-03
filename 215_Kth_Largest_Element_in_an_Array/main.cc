@@ -1,5 +1,7 @@
 #include "prac5.cc"
 
+#pragma GCC diagnostic ignored "-Wunused-variable"
+
 int main() {
     vector<int> nums = {2,1,0};         // [0,1,2]
     vector<int> nums1 = {5,1,1,2,0,0};  // [0,0,1,1,2,5]

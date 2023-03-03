@@ -1,5 +1,7 @@
 #include "prac4.cc"
 
+#pragma GCC diagnostic ignored "-Wunused-variable"
+
 int main() {
     vector<int> 
         case1 {2,1,5,6,2,3},        
