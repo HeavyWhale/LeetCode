@@ -2,4 +2,10 @@
 
 import os
 
-os.system('g++ -std=c++17 main.cc && ./a.out')
+os.system(
+    'clang++ '
+        '-std=c++17 '
+        '-Wall -Wextra -pedantic '
+        '-fsanitize=address,undefined '
+        'main.cc && ./a.out '
+)
