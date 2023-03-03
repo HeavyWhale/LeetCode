@@ -1,4 +1,4 @@
-#include "soln.cc"
+#include "prac1.cc"
 
 int main() {
     string
