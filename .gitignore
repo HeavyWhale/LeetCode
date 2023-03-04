@@ -256,4 +256,11 @@ poetry.toml
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,c++,python
+
 ISO_IEC - INTERNATIONAL STANDARD ISO_IEC 14882_2020(E) Programming languages — C++ Sixth edition 2020-12-ISO (2020).pdf
+
+# Exclude temp files
+\!TEMP/
+
+# Exclude Data_Structures for now
+Data_Structures/
