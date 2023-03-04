@@ -6,6 +6,7 @@ os.system(
     'clang++ '
         '-std=c++17 '
         '-Wall -Wextra -pedantic '
+        '-Wno-char-subscripts '
         '-fsanitize=address,undefined '
         'main.cc && ./a.out '
 )
