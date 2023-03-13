@@ -1,4 +1,4 @@
-#include "prac2.cc"
+#include "prac3.cc"
 
 #pragma GCC diagnostic ignored "-Wunused-variable"
 
@@ -7,7 +7,8 @@ int main() {
         exp1 {"abcabcbb"},
         exp2 {"bbbbb"},
         exp3 {"pwwkew"},
-        err1 {"abba"};
+        err1 {"abba"},
+        err2 {"tmmzuxt"};
     int
         h1   {},
         h2   {},
@@ -18,4 +19,5 @@ int main() {
     cout << so.lengthOfLongestSubstring(exp2) << '\n';     // 1
     cout << so.lengthOfLongestSubstring(exp3) << '\n';     // 3
     cout << so.lengthOfLongestSubstring(err1) << '\n';     // 2
+    cout << so.lengthOfLongestSubstring(err2) << '\n';     // 5
 }
