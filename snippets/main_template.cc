@@ -13,5 +13,5 @@ int main() {
         h3   {};
 
     Solution so;
-    cout << so. << '\n';     // 
+    cout << repr(so.) << '\n';     // 
 }
