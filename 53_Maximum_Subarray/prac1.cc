@@ -92,7 +92,7 @@ private:
     //          the maximal sum of any subarray in A[1..j], must containing the last entry A[j]
     //        = max( M(j-1), ^M(j) )
     // ^M(j) := the maximal sum of any subarray in A[1..j], must containing the last entry A[j]
-    //        = either the maximal sum of any subarray in A[1..j-1], must containing its last entry A[j-1] or
+    //        = either the maximal sum of any subarray in A[1..j-1], must containing its last entry A[j-1] PLUS the last entry A[j] or
     //          the value of last entry alone
     //        = max( ^M(j-1) + A[j], A[j] );
     int maxSubArray_DP(const vector<int>& nums) {
