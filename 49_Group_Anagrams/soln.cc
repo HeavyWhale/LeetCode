@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <functional>
 #include <iostream>
+#include "../utils.h"
 
 using std::vector, std::string, std::unordered_map, std::function;
 using std::cout;
@@ -36,10 +37,3 @@ public:
         return result;
     }
 };
-
-
-int main() {
-    vector<string> test = {"aab"};
-    Solution s = Solution();
-    s.groupAnagrams(test);
-}
