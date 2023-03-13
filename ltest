@@ -4,6 +4,8 @@ import os
 
 os.system(
     'clang++ '
+        '-I/usr/local/opt/llvm/include '
+        '-L/usr/local/opt/llvm/lib '
         '-std=c++17 '
         '-Wall -Wextra -pedantic '
         '-Wno-char-subscripts '
