@@ -1,4 +1,4 @@
-#include "prac4.cc"
+#include "prac5.cc"
 
 #pragma GCC diagnostic ignored "-Wunused-variable"
 
