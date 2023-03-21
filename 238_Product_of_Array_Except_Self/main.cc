@@ -1,4 +1,4 @@
-#include "prac5.cc"
+#include "prac6.cc"
 
 #pragma GCC diagnostic ignored "-Wunused-variable"
 
@@ -10,4 +10,4 @@ int main() {
     Solution so {};
     cout << repr(so.productExceptSelf(ex1)) << '\n';    // [24|12|8|6]
     cout << repr(so.productExceptSelf(ex2)) << '\n';    // [0|0|9|0|0]
-}
+} 
