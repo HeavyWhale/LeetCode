@@ -25,7 +25,8 @@ using std::vector, std::unordered_map, std::unordered_set, std::stack,
 // functions
 using std::swap, std::max, std::min, std::function, std::apply, std::stoi,
     std::make_pair, std::transform, std::sort, std::back_inserter,
-    std::min_element, std::max_element, std::for_each, std::accumulate;
+    std::min_element, std::max_element, std::for_each, std::accumulate,
+    std::minmax, std::minmax_element;
 // io-related
 using std::string, std::cout, std::endl, std::stringstream, std::to_string,
     std::ostringstream, std::setw, std::setfill;
@@ -48,10 +49,19 @@ using std::string, std::cout, std::endl, std::stringstream, std::to_string,
 // From https://stackoverflow.com/a/64215959/9438200
 #define NAMED_REPR(...) named_repr_of_vars(#__VA_ARGS__,__VA_ARGS__)
 
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
 // TODO: Use traits to generalize all repr functions' application on arbitrary container
 // see https://stackoverflow.com/a/7728728/9438200 for more detail
 
-// override `to_string`
+// overload `to_string`
 inline string to_string(const char& ch) {
     return string {ch};
 }
@@ -62,6 +72,21 @@ inline string to_string(const string& str) {
 
 inline string to_string(const bool& boolean) {
     return boolean ? "true" : "false";
+}
+
+string to_string(const TreeNode* root) {
+    stringstream result;
+
+    function<void(const string&, const TreeNode*, bool)> recur = 
+    [&recur, &result](const string& prefix, const TreeNode* node, bool isLeft) {
+        if (node == nullptr) return;
+        result << prefix << (isLeft ? "├──" : "└──" ) << node->val << '\n';
+        recur( prefix + (isLeft ? "│  " : "   "), node->left, true );
+        recur( prefix + (isLeft ? "│  " : "   "), node->right, false );
+    };
+
+    recur("", root, false);
+    return result.str();
 }
 
 template <class T>
