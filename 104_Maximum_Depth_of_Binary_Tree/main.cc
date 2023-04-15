@@ -1,4 +1,4 @@
-#include "soln.cc"
+#include "prac1.cc"
 
 #pragma GCC diagnostic ignored "-Wunused-variable"
 

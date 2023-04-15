@@ -20,5 +20,4 @@ int main() {
 
     Solution so;
     cout << repr(so.diameterOfBinaryTree(&t1)) << '\n';     // 3
-    cout << repr(&t1);
 }

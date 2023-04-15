@@ -1,4 +1,4 @@
-#include "soln.cc"
+#include "prac1.cc"
 
 #pragma GCC diagnostic ignored "-Wunused-variable"
 
@@ -16,4 +16,6 @@ int main() {
     cout << repr(so.characterReplacement(exp1, h1)) << '\n';     // 4
     cout << repr(so.characterReplacement(exp2, h2)) << '\n';     // 4
     cout << repr(so.characterReplacement(err1, e1)) << '\n';     // 4
+
+    cout << repr( string{exp1.cbegin(), exp1.cend()} ) << '\n';
 }
